@@ -3,8 +3,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons'; // Import the icon library you prefer
 import HomeScreen from '../screens/HomeScreen';
 import ContactUsScreen from '../screens/ContactUsScreen';
-import AboutUsScreen from '../screens/AboutUsScreen';
 import GetStartedScreen from '../screens/GetStartedScreen';
+import AboutUsScreen from '../screens/AboutUsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,6 +36,7 @@ const BottomTabNavigator: React.FC = () => {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Contact Us" component={ContactUsScreen} />
       <Tab.Screen name="About Us" component={AboutUsScreen} />
+
       <Tab.Screen name="Get Started" component={GetStartedScreen} />
     </Tab.Navigator>
   );

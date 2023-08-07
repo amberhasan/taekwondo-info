@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
+import axios from 'axios';
 
 const categories = [
   'Our Special',
@@ -13,25 +14,53 @@ const categories = [
   'Belt Requirements',
 ];
 
-const HomeScreen: React.FC = () => {
-  const renderCategoryItem = ({item}: {item: string}) => {
+const HomeScreen = () => {
+  const [menu, setMenu] = useState([]);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    axios
+      .get('http://127.0.0.1:3000/menu')
+      .then(result => {
+        console.log('result', result.data);
+        setMenu(result.data);
+        setError('');
+      })
+      .catch(error => {
+        setError(error.message);
+      });
+  }, []);
+
+  const renderCategoryItem = ({
+    item,
+  }: {
+    item: {
+      title: string;
+      description: string;
+      image: string;
+    };
+  }) => {
     return (
       <TouchableOpacity style={styles.categoryButton}>
-        <Text style={styles.categoryText}>{item}</Text>
+        <Text style={styles.categoryText}>{item.title}</Text>
+        <Text style={styles.categoryText}>{item.description}</Text>
+        <Text style={styles.categoryText}>{item.image}</Text>
       </TouchableOpacity>
     );
   };
 
   return (
     <View style={styles.container}>
-      {/* If you have other content in your HomeScreen, you can add it here */}
-      {/* Otherwise, you can directly use the FlatList */}
-      <FlatList
-        data={categories}
-        renderItem={renderCategoryItem}
-        keyExtractor={item => item}
-        contentContainerStyle={styles.categoriesContainer}
-      />
+      {error ? (
+        <Text>{error}</Text>
+      ) : (
+        <FlatList
+          data={menu}
+          renderItem={renderCategoryItem}
+          keyExtractor={item => item.title}
+          contentContainerStyle={styles.categoriesContainer}
+        />
+      )}
     </View>
   );
 };

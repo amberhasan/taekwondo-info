@@ -18,7 +18,10 @@ const GetStartedScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>First Learn About What We Teach</Text>
+      <Text style={styles.header}>
+        Need to change this page. Maybe facebook page in segmented button.
+        Mainly the form and map maybe.{' '}
+      </Text>
       {skillsToBuild.map((skill, index) => (
         <Text key={index} style={styles.skill}>
           {skill}

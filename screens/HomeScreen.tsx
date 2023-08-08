@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
 import axios from 'axios';
+import HomeMenuItem from '../components/HomeMenuItem';
 
 const categories = [
   'Our Special',
@@ -74,13 +75,12 @@ const HomeScreen = props => {
     };
   }) => {
     return (
-      <TouchableOpacity
-        style={styles.categoryButton}
-        onPress={() => onMenuPress(item.id)}>
-        <Text style={styles.categoryText}>{item.title}</Text>
-        {/* <Text style={styles.categoryText}>{item.description}</Text>
-        <Text style={styles.categoryText}>{item.image}</Text> */}
-      </TouchableOpacity>
+      <HomeMenuItem
+        title={item.title}
+        onPress={() => {
+          onMenuPress(item.id);
+        }}
+      />
     );
   };
 

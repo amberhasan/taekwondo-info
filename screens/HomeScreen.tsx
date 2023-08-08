@@ -1,84 +1,102 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  ScrollView,
-  Image,
-} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, Text, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
+import axios from 'axios';
 
-const categoriesData = [
-  {
-    title: 'Our Special',
-    image: require('../assets/images/about_us/grandmaster_lee.png'),
-  },
-  {
-    title: "Children's Classes",
-    image: require('../assets/images/about_us/grandmaster_lee.png'),
-  },
-  {
-    title: 'Our Special',
-    image: require('../assets/images/about_us/grandmaster_lee.png'),
-  },
-  {
-    title: "Children's Classes",
-    image: require('../assets/images/about_us/grandmaster_lee.png'),
-  },
-  {
-    title: 'Our Special',
-    image: require('../assets/images/about_us/grandmaster_lee.png'),
-  },
-  {
-    title: "Children's Classes",
-    image: require('../assets/images/about_us/grandmaster_lee.png'),
-  },
-  {
-    title: 'Our Special',
-    image: require('../assets/images/about_us/grandmaster_lee.png'),
-  },
-  {
-    title: "Children's Classes",
-    image: require('../assets/images/about_us/grandmaster_lee.png'),
-  },
-
-  // Add more categories and images here
+const categories = [
+  'Our Special',
+  "Children's Classes",
+  'Adult Classes',
+  'Demo Team',
+  'Poomsae Team',
+  'Our School Championship',
+  'Summer Program',
+  'Birthday Parties',
+  'Belt Requirements',
 ];
-const chunkArray = (array, chunkSize) => {
-  const chunkedArray = [];
-  for (let i = 0; i < array.length; i += chunkSize) {
-    chunkedArray.push(array.slice(i, i + chunkSize));
-  }
-  return chunkedArray;
-};
 
-const HomeScreen: React.FC = () => {
-  const chunkedCategories = chunkArray(categoriesData, 2); // Group categories into rows of 2
+const HomeScreen = props => {
+  const [menu, setMenu] = useState([]);
+  const [error, setError] = useState('');
 
-  const renderCategoryItem = ({item}: {item: {title: string; image: any}}) => {
+  const onMenuPress = (id: number) => {
+    switch (id) {
+      case 1:
+        props.navigation.navigate('BeltRequirements');
+        break;
+      case 2:
+        props.navigation.navigate('BeltRequirements');
+        break;
+      case 3:
+        props.navigation.navigate('BeltRequirements');
+        break;
+      case 4:
+        props.navigation.navigate('BeltRequirements');
+        break;
+      case 5:
+        props.navigation.navigate('BeltRequirements');
+        break;
+      case 6:
+        props.navigation.navigate('BeltRequirements');
+        break;
+      case 7:
+        props.navigation.navigate('BeltRequirements');
+        break;
+      case 8:
+        props.navigation.navigate('BeltRequirements');
+        break;
+      case 9:
+        props.navigation.navigate('BeltRequirements');
+        break;
+    }
+  };
+
+  useEffect(() => {
+    axios
+      .get('http://127.0.0.1:3000/menu')
+      .then(result => {
+        console.log('result', result.data);
+        setMenu(result.data);
+        setError('');
+      })
+      .catch(error => {
+        setError(error.message);
+      });
+  }, []);
+
+  const renderCategoryItem = ({
+    item,
+  }: {
+    item: {
+      id: number;
+      title: string;
+      description: string;
+      image: string;
+    };
+  }) => {
     return (
-      <TouchableOpacity style={styles.categoryButton}>
-        <Image source={item.image} style={styles.categoryImage} />
+      <TouchableOpacity
+        style={styles.categoryButton}
+        onPress={() => onMenuPress(item.id)}>
         <Text style={styles.categoryText}>{item.title}</Text>
+        {/* <Text style={styles.categoryText}>{item.description}</Text>
+        <Text style={styles.categoryText}>{item.image}</Text> */}
       </TouchableOpacity>
     );
   };
 
   return (
-    <ScrollView style={styles.container}>
-      {chunkedCategories.map((row, rowIndex) => (
-        <View key={rowIndex} style={styles.row}>
-          {row.map(category => (
-            <React.Fragment key={category.title}>
-              {renderCategoryItem({item: category})}
-            </React.Fragment>
-          ))}
-        </View>
-      ))}
-      <View style={styles.fullWidthRow}>
-        {renderCategoryItem({item: categoriesData[7]})}
-      </View>
-    </ScrollView>
+    <View style={styles.container}>
+      {error ? (
+        <Text>{error}</Text>
+      ) : (
+        <FlatList
+          data={menu}
+          renderItem={renderCategoryItem}
+          keyExtractor={item => item.title}
+          contentContainerStyle={styles.categoriesContainer}
+        />
+      )}
+    </View>
   );
 };
 
@@ -87,35 +105,20 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 10,
-  },
-  fullWidthRow: {
-    marginBottom: 10,
+  categoriesContainer: {
+    flexGrow: 1,
+    justifyContent: 'space-evenly',
   },
   categoryButton: {
-    backgroundColor: 'blue',
-    width: '48%', // Adjust the width to fit two buttons in a row
+    backgroundColor: 'blue', // Customize the button background color
     paddingVertical: 20,
     alignItems: 'center',
     borderRadius: 8,
-    overflow: 'hidden',
-  },
-  categoryImage: {
-    width: '100%',
-    height: '100%',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    opacity: 0.5,
   },
   categoryText: {
-    color: 'white',
+    color: 'white', // Customize the text color
     fontSize: 20,
     fontWeight: 'bold',
-    zIndex: 1,
   },
 });
 

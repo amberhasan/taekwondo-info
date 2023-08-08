@@ -5,6 +5,7 @@ import HomeScreen from '../screens/HomeScreen';
 import ContactUsScreen from '../screens/ContactUsScreen';
 import GetStartedScreen from '../screens/GetStartedScreen';
 import AboutUsScreen from '../screens/AboutUsScreen';
+import HomeScreenStack from './HomeScreenStack';
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +34,13 @@ const BottomTabNavigator: React.FC = () => {
           return <Icon name={iconName} size={size} color={color} />;
         },
       })}>
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen
+        name="HomeScreenStack"
+        component={HomeScreenStack}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Tab.Screen name="Contact Us" component={ContactUsScreen} />
       <Tab.Screen name="About Us" component={AboutUsScreen} />
 

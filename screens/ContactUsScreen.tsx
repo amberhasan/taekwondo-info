@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-const GetStartedScreen: React.FC = () => {
+const ContactUsScreen: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -28,6 +28,14 @@ const GetStartedScreen: React.FC = () => {
 
     // Log the email content (replace with actual email sending logic)
     console.log('Email Content:', emailContent);
+
+    // Clear the form fields
+    setName('');
+    setEmail('');
+    setPhone('');
+    setAge('');
+    setPreviousExperience('');
+    setMessage('');
   };
 
   return (
@@ -114,4 +122,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GetStartedScreen;
+export default ContactUsScreen;

@@ -1,5 +1,6 @@
 import React from 'react';
 import {TouchableOpacity, View, Text, ImageBackground} from 'react-native';
+import {rgbaColor} from 'react-native-reanimated';
 
 const HomeMenuItem = ({data, onPress}) => {
   const {image, title, description, id} = data;
@@ -21,6 +22,7 @@ const HomeMenuItem = ({data, onPress}) => {
       <ImageBackground source={image} style={{height: '100%', width: '100%'}}>
         <View
           style={{
+            backgroundColor: 'rgba(33, 37, 41, 0.3)',
             padding: 8,
             borderRadius: 20,
             alignItems: 'center',

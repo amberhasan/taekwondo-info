@@ -6,37 +6,41 @@ const GettingStarted = () => {
     <View
       style={{
         height: 150,
-        padding: 5,
-        borderRadius: 5,
+        borderRadius: 10,
         margin: 10,
+        overflow: 'hidden', // Ensure rounded corners are applied
       }}>
-      <View
+      <ImageBackground
+        source={require('../assets/images/homepage/getting_started.png')}
         style={{
-          flex: 1,
-          borderRadius: 5,
+          height: 150,
+          width: '100%',
         }}>
-        <ImageBackground
-          source={require('../assets/images/homepage/getting_started.png')}
+        <View
           style={{
-            height: 150,
-            width: '100%',
+            flex: 1,
+            backgroundColor: 'rgba(33, 37, 41, 0.6)',
+            padding: 10,
+            justifyContent: 'center',
           }}>
-          <View style={{flex: 1, backgroundColor: 'rgba(33, 37, 41, 0.6)'}}>
-            <Text
-              style={{
-                color: 'white',
-              }}>
-              title
-            </Text>
-            <Text
-              style={{
-                color: 'white',
-              }}>
-              description
-            </Text>
-          </View>
-        </ImageBackground>
-      </View>
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 18,
+              fontWeight: 'bold',
+              marginBottom: 5,
+            }}>
+            Get Started
+          </Text>
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 14,
+            }}>
+            Try our special!
+          </Text>
+        </View>
+      </ImageBackground>
     </View>
   );
 };

@@ -11,16 +11,14 @@ const HomeMenuItem = ({data, onPress}) => {
         height: 100,
         flex: 1,
         borderWidth: 0.5,
-        borderColor: 'red',
+        borderColor: 'black',
         margin: 10,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
         overflow: 'hidden',
       }}>
-      <ImageBackground
-        source={{uri: image}}
-        style={{height: '100%', width: '100%'}}>
+      <ImageBackground source={image} style={{height: '100%', width: '100%'}}>
         <View
           style={{
             padding: 8,

@@ -19,9 +19,9 @@ const AboutUsScreen = () => {
 
   return (
     <View>
-      {/* Location */}
+      {/* About Instructor */}
       <TouchableOpacity onPress={toggleLocation}>
-        <Text>Location</Text>
+        <Text>About Instructor</Text>
       </TouchableOpacity>
       <Collapsible collapsed={locationCollapsed}>
         <Text>Location details go here.</Text>
@@ -29,10 +29,34 @@ const AboutUsScreen = () => {
 
       {/* Business Hours */}
       <TouchableOpacity onPress={toggleHours}>
-        <Text>Business Hours</Text>
+        <Text>About Our School</Text>
       </TouchableOpacity>
       <Collapsible collapsed={hoursCollapsed}>
         <Text>Business hours details go here.</Text>
+      </Collapsible>
+
+      {/* What We Teach */}
+      <TouchableOpacity onPress={toggleRules}>
+        <Text>What We Teach</Text>
+      </TouchableOpacity>
+      <Collapsible collapsed={rulesCollapsed}>
+        <Text>School rules details go here.</Text>
+      </Collapsible>
+
+      {/* Why Taekwondo */}
+      <TouchableOpacity onPress={toggleRules}>
+        <Text>Why Taekwondo</Text>
+      </TouchableOpacity>
+      <Collapsible collapsed={rulesCollapsed}>
+        <Text>School rules details go here.</Text>
+      </Collapsible>
+
+      {/* Benefits of Taekwondo */}
+      <TouchableOpacity onPress={toggleRules}>
+        <Text>Benefits of Taekwondo</Text>
+      </TouchableOpacity>
+      <Collapsible collapsed={rulesCollapsed}>
+        <Text>School rules details go here.</Text>
       </Collapsible>
 
       {/* School Rules */}
@@ -49,14 +73,6 @@ const AboutUsScreen = () => {
       </TouchableOpacity>
       <Collapsible collapsed={facebookCollapsed}>
         <Text>Facebook page details go here.</Text>
-      </Collapsible>
-
-      {/* What We Teach */}
-      <TouchableOpacity onPress={toggleTeach}>
-        <Text>What We Teach</Text>
-      </TouchableOpacity>
-      <Collapsible collapsed={teachCollapsed}>
-        <Text>Details about what we teach go here.</Text>
       </Collapsible>
 
       {/* Our Schedule */}

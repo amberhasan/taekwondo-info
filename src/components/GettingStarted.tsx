@@ -22,6 +22,7 @@ const GettingStarted = () => {
             backgroundColor: 'rgba(33, 37, 41, 0.6)',
             padding: 10,
             justifyContent: 'center',
+            alignItems: 'center',
           }}>
           <Text
             style={{

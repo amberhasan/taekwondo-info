@@ -9,7 +9,7 @@ const HomeMenuItem = ({data, onPress}) => {
       onPress={() => onPress(id)}
       activeOpacity={0.5}
       style={{
-        height: 100,
+        height: 120,
         flex: 1,
         borderWidth: 0.5,
         borderColor: 'black',
@@ -20,25 +20,25 @@ const HomeMenuItem = ({data, onPress}) => {
         overflow: 'hidden',
       }}>
       <ImageBackground source={image} style={{height: '100%', width: '100%'}}>
-        <View
-          style={{
-            backgroundColor: 'rgba(33, 37, 41, 0.3)',
-            padding: 8,
-            borderRadius: 20,
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '80%',
-            alignSelf: 'center',
-            borderColor: 'white', // Set the border color to white
-            borderWidth: 2, // Set the border width
-          }}>
-          <Text
+        <View style={{flex: 1, justifyContent: 'flex-end'}}>
+          <View
             style={{
-              color: 'white',
-              textAlign: 'center',
+              backgroundColor: 'rgba(33, 37, 41, 0.5)',
+              padding: 6,
+              // flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+              alignSelf: 'stretch',
             }}>
-            {title}
-          </Text>
+            <Text
+              style={{
+                color: 'white',
+                textAlign: 'center',
+                fontWeight: 'bold',
+              }}>
+              {title}
+            </Text>
+          </View>
         </View>
       </ImageBackground>
     </TouchableOpacity>

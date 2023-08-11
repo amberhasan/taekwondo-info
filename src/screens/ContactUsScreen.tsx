@@ -8,6 +8,7 @@ const ContactUsScreen = () => {
       <Text style={styles.infoText}>Email: Use Contact Form!</Text>
       <Text style={styles.infoText}>Website: leesustaekwondo.com</Text>
       <Text style={styles.infoText}>Phone: +1 (972) 208-8504</Text>
+      <Text style={styles.infoText}>Facebook Page</Text>
 
       <Text style={styles.sectionHeader}>Address</Text>
       <Text style={styles.infoText}>6921 Independence Pkwy. #160</Text>

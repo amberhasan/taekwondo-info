@@ -55,7 +55,8 @@ const AboutUsScreen = () => {
         </Text>
       </CollapsibleView>
 
-      <CollapsibleView title={'What We Teach'}>
+      <CollapsibleView title={'About Taekwondo'}>
+        <Text>What do we teach?</Text>
         <Text style={styles.description}>
           Tae Kwon Do, the world’s most popular martial art, originated in
           Korea. Officially introduced as an Olympic sport in 2000, Tae Kwon Do
@@ -69,9 +70,7 @@ const AboutUsScreen = () => {
           flexibility, and improves coordination and balance. Tae Kwon Do is
           excellent for people of all ages and types.
         </Text>
-      </CollapsibleView>
-
-      <CollapsibleView title={'Why Taekwondo?'}>
+        <Text>Why Taekwondo?</Text>
         <Text style={styles.description}>
           Developing and maintaining a sound body and mind are keys to enjoying
           life. With Taekwondo, you learn to unite the power of your body with
@@ -84,9 +83,7 @@ const AboutUsScreen = () => {
           Taekwondo, you will improve your physical abilities, your mental
           discipline and maximize your self-defense skills..
         </Text>
-      </CollapsibleView>
-
-      <CollapsibleView title={'Benefits of Taekwondo'}>
+        <Text>Benefits of Taekwondo</Text>
         <Text>
           Improved Reflexes and Coordination. Increased strength, stamina and
           Flexibility. Improved Cardiovascular endurance and Weight Control.
@@ -96,29 +93,18 @@ const AboutUsScreen = () => {
         </Text>
       </CollapsibleView>
 
-      {/* School Rules */}
-      <TouchableOpacity onPress={toggleRules}>
-        <Text>School Rules</Text>
-      </TouchableOpacity>
-      <Collapsible collapsed={rulesCollapsed}>
-        <Text>School rules details go here.</Text>
-      </Collapsible>
+      <CollapsibleView title={'School Rules'}>
+        <Text>
+          - Please arrive 10 minutes before class time. - Stretch quietly while
+          waiting for class to begin. - Yellow belt and up = Sparring Gear is
+          required for protection. - Keep body, hair and uniform clean and
+          presentable. - Always be respectful and courteous to others.
+        </Text>
+      </CollapsibleView>
 
-      {/* Facebook Page */}
-      <TouchableOpacity onPress={toggleFacebook}>
-        <Text>Facebook Page</Text>
-      </TouchableOpacity>
-      <Collapsible collapsed={facebookCollapsed}>
-        <Text>Facebook page details go here.</Text>
-      </Collapsible>
-
-      {/* Our Schedule */}
-      <TouchableOpacity onPress={toggleSchedule}>
-        <Text>Our Schedule</Text>
-      </TouchableOpacity>
-      <Collapsible collapsed={scheduleCollapsed}>
-        <Text>Our school schedule details go here.</Text>
-      </Collapsible>
+      <CollapsibleView title={'Our Schedule'}>
+        <Text>Schedule</Text>
+      </CollapsibleView>
     </View>
   );
 };

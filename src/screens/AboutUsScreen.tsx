@@ -29,7 +29,7 @@ const AboutUsScreen = () => {
 
   return (
     <View>
-      <CollapsibleView title={'About Instructor'}>
+      <CollapsibleView title={'About Instructor (can be part of below)'}>
         <Text style={styles.description}>
           Master Lee (President & Founder) is the head instructor at Lee's U.S.
           Taekwondo Academy. He is a WTF certified 8th Dan Black Belt with over

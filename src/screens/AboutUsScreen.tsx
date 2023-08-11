@@ -13,20 +13,6 @@ const Data = [
 ];
 
 const AboutUsScreen = () => {
-  const [locationCollapsed, setLocationCollapsed] = useState(true);
-  const [hoursCollapsed, setHoursCollapsed] = useState(true);
-  const [rulesCollapsed, setRulesCollapsed] = useState(true);
-  const [facebookCollapsed, setFacebookCollapsed] = useState(true);
-  const [teachCollapsed, setTeachCollapsed] = useState(true);
-  const [scheduleCollapsed, setScheduleCollapsed] = useState(true);
-
-  const toggleLocation = () => setLocationCollapsed(!locationCollapsed);
-  const toggleHours = () => setHoursCollapsed(!hoursCollapsed);
-  const toggleRules = () => setRulesCollapsed(!rulesCollapsed);
-  const toggleFacebook = () => setFacebookCollapsed(!facebookCollapsed);
-  const toggleTeach = () => setTeachCollapsed(!teachCollapsed);
-  const toggleSchedule = () => setScheduleCollapsed(!scheduleCollapsed);
-
   return (
     <View>
       <CollapsibleView title={'About Instructor (can be part of below)'}>

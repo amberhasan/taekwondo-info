@@ -1,10 +1,28 @@
 import React from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import MapView from 'react-native-maps';
+import {Marker} from 'react-native-maps';
 
 const ContactUsScreen = () => {
   return (
     <ScrollView style={styles.container}>
+      <MapView
+        style={{height: 300, width: '100%'}}
+        initialRegion={{
+          latitude: 33.071773349668476,
+          longitude: -96.75261643681985,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}>
+        <Marker
+          coordinate={{
+            latitude: 33.071773349668476,
+            longitude: -96.75261643681985,
+          }}
+          title={"Lee's US Taekwondo"}
+          description={'Our Taekwondo Location'}
+        />
+      </MapView>
       <Text style={styles.sectionHeader}>Contact Info</Text>
       <Text style={styles.infoText}>Email: Use Contact Form!</Text>
       <Text style={styles.infoText}>Website: leesustaekwondo.com</Text>
@@ -24,15 +42,6 @@ const ContactUsScreen = () => {
       <Text style={styles.infoText}>Sat:</Text>
       <Text style={styles.infoText}>9:00 AM - 1:00 PM</Text>
       <Text style={styles.infoText}>Closed Sunday</Text>
-      <MapView
-        style={{height: 300, width: '100%'}}
-        initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-      />
     </ScrollView>
   );
 };

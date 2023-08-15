@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, FlatList, Alert} from 'react-native';
 import GettingStarted from '../components/GettingStarted';
 import HomeMenuItem from '../components/HomeMenuItem';
+import ModalView from '../components/ModalView';
+import AdultTeenClassesView from '../components/AdultTeenClassesView';
+import DemoTeamView from '../components/DemoTeamView';
+import PoomsaeTeamView from '../components/PoomsaeTeamView';
 
 const menu = [
   {
@@ -58,18 +62,49 @@ const menu = [
 ];
 
 const HomeScreen = props => {
+  let [isVisible, setIsVisible] = useState(true);
+  let [id, setId] = useState(1);
+  let views = [
+    null,
+    <AdultTeenClassesView />,
+    <DemoTeamView />,
+    <PoomsaeTeamView />,
+  ];
   const onMenuPress = id => {
+    setId(id);
     switch (id) {
       case 1:
         props.navigation.navigate('ChildrensClassesScreen');
         break;
+      case 2:
+      case 3:
+      case 4:
+        setIsVisible(true);
+        break;
       default:
         Alert.alert('Error', `${id} is not handled yet`);
     }
-    // Alert.alert('ID', id.toString());
   };
+
+  const showView = id => {
+    switch (id) {
+      case 2:
+        return <AdultTeenClassesView />;
+      case 3:
+        return <DemoTeamView />;
+      case 4:
+        return <PoomsaeTeamView />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <View style={{flex: 1}}>
+      <ModalView isVisible={isVisible} setIsVisible={setIsVisible}>
+        {/* {views[id - 1]} */}
+        {showView(id)}
+      </ModalView>
       <FlatList
         style={{flex: 1}}
         numColumns={2}

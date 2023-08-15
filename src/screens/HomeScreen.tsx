@@ -57,14 +57,19 @@ const menu = [
   },
 ];
 
-const HomeScreen = () => {
+const HomeScreen = props => {
   const onMenuPress = id => {
-    Alert.alert('ID', id.toString());
+    switch (id) {
+      case 1:
+        props.navigation.navigate('ChildrensClassesScreen');
+        break;
+      default:
+        Alert.alert('Error', `${id} is not handled yet`);
+    }
+    // Alert.alert('ID', id.toString());
   };
   return (
     <View style={{flex: 1}}>
-      <Text>HomeScreen</Text>
-      {/*  */}
       <FlatList
         style={{flex: 1}}
         numColumns={2}

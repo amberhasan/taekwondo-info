@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import ModalView from './ModalView';
+import colors from '../theme/colors';
 
 const GettingStarted = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -44,7 +45,7 @@ const GettingStarted = () => {
             }}>
             <Text
               style={{
-                color: 'white',
+                color: colors.lightYellow,
                 fontSize: 18,
                 fontWeight: 'bold',
                 marginBottom: 5,
@@ -53,7 +54,7 @@ const GettingStarted = () => {
             </Text>
             <Text
               style={{
-                color: 'white',
+                color: colors.lightYellow,
                 fontSize: 14,
               }}>
               Try our special!

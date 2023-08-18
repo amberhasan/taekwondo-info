@@ -1,6 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, View, Text, ImageBackground} from 'react-native';
 import {rgbaColor} from 'react-native-reanimated';
+import colors from '../theme/colors';
 
 const HomeMenuItem = ({data, onPress}) => {
   const {image, title, description, id} = data;
@@ -18,6 +19,14 @@ const HomeMenuItem = ({data, onPress}) => {
         alignItems: 'center',
         borderRadius: 10,
         overflow: 'hidden',
+        elevation: 5, // Apply a shadow effect
+        shadowColor: colors.darkYellow, // Use Dark Yellow for shadow color
+        shadowOffset: {
+          width: 10,
+          height: 10,
+        },
+        // shadowOpacity: 0.3,
+        shadowRadius: 4,
       }}>
       <ImageBackground source={image} style={{height: '100%', width: '100%'}}>
         <View style={{flex: 1, justifyContent: 'flex-end'}}>
@@ -32,7 +41,7 @@ const HomeMenuItem = ({data, onPress}) => {
             }}>
             <Text
               style={{
-                color: 'white',
+                color: colors.lightYellow,
                 textAlign: 'center',
                 fontWeight: 'bold',
               }}>

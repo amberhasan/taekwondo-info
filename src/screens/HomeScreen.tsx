@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, FlatList, Alert} from 'react-native';
+import {View, Text, FlatList, Alert, StatusBar} from 'react-native';
 import GettingStarted from '../components/GettingStarted';
 import HomeMenuItem from '../components/HomeMenuItem';
 import ModalView from '../components/ModalView';
@@ -9,6 +9,7 @@ import PoomsaeTeamView from '../components/PoomsaeTeamView';
 import SchoolChampionshipView from '../components/SchoolChampionshipView';
 import SummerReadingProgram from '../components/SummerReadingProgram';
 import BirthdayParty from '../components/BirthdayParty';
+import colors from '../theme/colors';
 
 const menu = [
   {
@@ -106,7 +107,8 @@ const HomeScreen = props => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: colors.black}}>
+      <StatusBar barStyle={'light-content'} />
       <ModalView isVisible={isVisible} setIsVisible={setIsVisible}>
         {/* {views[id - 1]} */}
         {showView(id)}

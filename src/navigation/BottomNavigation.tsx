@@ -4,13 +4,25 @@ import Icon from 'react-native-vector-icons/MaterialIcons'; // Import the icon l
 import ContactUsScreen from '../screens/ContactUsScreen';
 import AboutUsScreen from '../screens/AboutUsScreen';
 import HomeScreenStackNavigation from './HomeScreenStackNavigation';
+import colors from '../theme/colors';
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator: React.FC = () => {
   return (
     <Tab.Navigator
+      initialRouteName="HomeScreenStackNavigation"
       screenOptions={({route}) => ({
+        tabBarActiveTintColor: colors.darkYellow,
+        tabBarInactiveTintColor: colors.veryLightGray,
+        tabBarStyle: {
+          height: '10%',
+          // paddingHorizontal: 5,
+          // paddingTop: 0,
+          backgroundColor: colors.black,
+          // position: 'absolute',
+          // borderTopWidth: 0,
+        },
         tabBarIcon: ({color, size}) => {
           let iconName;
           switch (route.name) {
@@ -29,9 +41,16 @@ const BottomTabNavigator: React.FC = () => {
             default:
               iconName = 'home';
           }
-          return <Icon name={iconName} size={size} color={color} />;
+          return (
+            <Icon
+              name={iconName}
+              size={iconName === 'home' ? 45 : size}
+              color={color}
+            />
+          );
         },
       })}>
+      <Tab.Screen name="About Us" component={AboutUsScreen} />
       <Tab.Screen
         name="HomeScreenStackNavigation"
         component={HomeScreenStackNavigation}
@@ -40,7 +59,6 @@ const BottomTabNavigator: React.FC = () => {
         }}
       />
       <Tab.Screen name="Contact Us" component={ContactUsScreen} />
-      <Tab.Screen name="About Us" component={AboutUsScreen} />
     </Tab.Navigator>
   );
 };

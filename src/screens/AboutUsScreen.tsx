@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import CollapsibleView from '../components/CollapsibleView';
+import colors from '../theme/colors';
 
 const Data = [
   {
@@ -14,8 +15,20 @@ const Data = [
 
 const AboutUsScreen = () => {
   return (
-    <View>
-      <CollapsibleView title={'About Instructor (can be part of below)'}>
+    <View style={{flex: 1, backgroundColor: 'black'}}>
+      <CollapsibleView title={'School Rules'}>
+        <Text style={styles.description}>
+          - Please arrive 10 minutes before class time. - Stretch quietly while
+          waiting for class to begin. - Yellow belt and up = Sparring Gear is
+          required for protection. - Keep body, hair and uniform clean and
+          presentable. - Always be respectful and courteous to others.
+        </Text>
+      </CollapsibleView>
+
+      <CollapsibleView title={'Our Schedule'}>
+        <Text>Schedule</Text>
+      </CollapsibleView>
+      <CollapsibleView title={'About Instructor'}>
         <Text style={styles.description}>
           Master Lee (President & Founder) is the head instructor at Lee's U.S.
           Taekwondo Academy. He is a WTF certified 8th Dan Black Belt with over
@@ -78,19 +91,6 @@ const AboutUsScreen = () => {
           yourself, and have FUN!
         </Text>
       </CollapsibleView>
-
-      <CollapsibleView title={'School Rules'}>
-        <Text>
-          - Please arrive 10 minutes before class time. - Stretch quietly while
-          waiting for class to begin. - Yellow belt and up = Sparring Gear is
-          required for protection. - Keep body, hair and uniform clean and
-          presentable. - Always be respectful and courteous to others.
-        </Text>
-      </CollapsibleView>
-
-      <CollapsibleView title={'Our Schedule'}>
-        <Text>Schedule</Text>
-      </CollapsibleView>
     </View>
   );
 };
@@ -98,7 +98,7 @@ const AboutUsScreen = () => {
 const styles = StyleSheet.create({
   description: {
     fontSize: 18,
-    color: 'black',
+    color: colors.veryLightGray,
     paddingVertical: 15,
     paddingHorizontal: 10,
   },

@@ -6,6 +6,9 @@ import ModalView from '../components/ModalView';
 import AdultTeenClassesView from '../components/AdultTeenClassesView';
 import DemoTeamView from '../components/DemoTeamView';
 import PoomsaeTeamView from '../components/PoomsaeTeamView';
+import SchoolChampionshipView from '../components/SchoolChampionshipView';
+import SummerReadingProgram from '../components/SummerReadingProgram';
+import BirthdayParty from '../components/BirthdayParty';
 
 const menu = [
   {
@@ -64,12 +67,6 @@ const menu = [
 const HomeScreen = props => {
   let [isVisible, setIsVisible] = useState(true);
   let [id, setId] = useState(1);
-  let views = [
-    null,
-    <AdultTeenClassesView />,
-    <DemoTeamView />,
-    <PoomsaeTeamView />,
-  ];
   const onMenuPress = id => {
     setId(id);
     switch (id) {
@@ -79,6 +76,9 @@ const HomeScreen = props => {
       case 2:
       case 3:
       case 4:
+      case 5:
+      case 6:
+      case 7:
         setIsVisible(true);
         break;
       default:
@@ -94,6 +94,12 @@ const HomeScreen = props => {
         return <DemoTeamView />;
       case 4:
         return <PoomsaeTeamView />;
+      case 5:
+        return <SchoolChampionshipView />;
+      case 6:
+        return <SummerReadingProgram />;
+      case 7:
+        return <BirthdayParty />;
       default:
         return null;
     }

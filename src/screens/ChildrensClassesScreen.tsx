@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import colors from '../theme/colors'; // Import the colors from your color scheme
 
 const ChildrensClassesScreen = () => {
   return (
@@ -41,28 +42,34 @@ const ChildrensClassesScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    backgroundColor: colors.black,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: colors.yellow,
   },
   description: {
     fontSize: 16,
     marginBottom: 15,
+    color: colors.white,
   },
   highlights: {
     fontSize: 16,
     marginBottom: 15,
     fontStyle: 'italic',
+    color: colors.lightYellow,
   },
   callToAction: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: colors.darkYellow,
   },
   classInformation: {
     fontSize: 16,
+    color: colors.white,
   },
 });
 

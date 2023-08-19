@@ -62,6 +62,7 @@ const BottomTabNavigator: React.FC = () => {
         name="HomeScreenStackNavigation"
         component={HomeScreenStackNavigation}
         options={{
+          tabBarLabel: 'Home',
           headerShown: false,
         }}
       />

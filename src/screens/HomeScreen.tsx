@@ -66,7 +66,7 @@ const menu = [
 ];
 
 const HomeScreen = props => {
-  let [isVisible, setIsVisible] = useState(true);
+  let [isVisible, setIsVisible] = useState(false);
   let [id, setId] = useState(1);
   const onMenuPress = id => {
     setId(id);
@@ -110,7 +110,6 @@ const HomeScreen = props => {
     <View style={{flex: 1, backgroundColor: colors.black}}>
       <StatusBar barStyle={'light-content'} />
       <ModalView isVisible={isVisible} setIsVisible={setIsVisible}>
-        {/* {views[id - 1]} */}
         {showView(id)}
       </ModalView>
       <FlatList

@@ -23,6 +23,7 @@ const HomeScreenStackNavigation = () => {
         component={ChildrensClassesScreen}
         options={{
           title: `Children's Classes`,
+          headerStyle: {backgroundColor: colors.black},
         }}
       />
     </Stack.Navigator>

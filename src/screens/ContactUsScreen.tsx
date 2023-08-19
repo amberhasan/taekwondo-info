@@ -30,7 +30,7 @@ const ContactUsScreen = () => {
         <Text style={styles.sectionHeader}>Contact Info</Text>
         <Text style={styles.infoText}>Email: Use Contact Form!</Text>
         <Text style={styles.infoText}>Website: leesustaekwondo.com</Text>
-        <Text style={styles.infoText}>Phone: +1 (972) 208-8504</Text>
+        <Text style={styles.infoText}>(972) 208-8504</Text>
         <Text style={styles.infoText}>Facebook Page</Text>
       </View>
       <View style={styles.section}>
@@ -40,16 +40,30 @@ const ContactUsScreen = () => {
       </View>
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>Business Hours</Text>
-        <Text style={styles.infoText}>Mon, Wed:</Text>
-        <Text style={styles.infoText}>1:45 PM - 9:00 PM</Text>
-        <Text style={styles.infoText}>Tues, Thur:</Text>
-        <Text style={styles.infoText}>9:30 AM - 11:00 AM</Text>
-        <Text style={styles.infoText}>1:45 PM - 9:00 PM</Text>
-        <Text style={styles.infoText}>Fri:</Text>
-        <Text style={styles.infoText}>1:45 PM - 7:30 PM</Text>
-        <Text style={styles.infoText}>Sat:</Text>
-        <Text style={styles.infoText}>9:00 AM - 1:00 PM</Text>
-        <Text style={styles.infoText}>Closed Sunday</Text>
+
+        <View style={styles.daySection}>
+          <Text style={styles.infoText}>Monday, Wednesday:</Text>
+          <Text style={styles.infoText}>1:45 PM - 9:00 PM</Text>
+        </View>
+
+        <View style={styles.daySection}>
+          <Text style={styles.infoText}>Tuesday, Thursday:</Text>
+          <Text style={styles.infoText}>9:30 - 11 AM, 1:45 - 9 PM</Text>
+        </View>
+
+        <View style={styles.daySection}>
+          <Text style={styles.infoText}>Friday:</Text>
+          <Text style={styles.infoText}>1:45 PM - 7:30 PM</Text>
+        </View>
+
+        <View style={styles.daySection}>
+          <Text style={styles.infoText}>Saturday:</Text>
+          <Text style={styles.infoText}>9:00 AM - 1:00 PM</Text>
+        </View>
+
+        <View style={styles.daySection}>
+          <Text style={styles.infoText}>Closed Sunday</Text>
+        </View>
       </View>
     </ScrollView>
   );
@@ -82,6 +96,11 @@ const styles = StyleSheet.create({
   infoText: {
     marginBottom: 5,
     color: colors.lightYellow,
+  },
+  daySection: {
+    flexDirection: 'row', // Align text in a row
+    justifyContent: 'space-between', // Space out text within the row
+    marginBottom: 5, // Add some spacing between day sections
   },
 });
 

@@ -50,7 +50,14 @@ const BottomTabNavigator: React.FC = () => {
           );
         },
       })}>
-      <Tab.Screen name="About Us" component={AboutUsScreen} />
+      <Tab.Screen
+        name="About Us"
+        component={AboutUsScreen}
+        options={{
+          headerStyle: {backgroundColor: colors.black},
+          headerTitleStyle: {color: colors.darkYellow},
+        }}
+      />
       <Tab.Screen
         name="HomeScreenStackNavigation"
         component={HomeScreenStackNavigation}
@@ -58,7 +65,14 @@ const BottomTabNavigator: React.FC = () => {
           headerShown: false,
         }}
       />
-      <Tab.Screen name="Contact Us" component={ContactUsScreen} />
+      <Tab.Screen
+        name="Contact Us"
+        component={ContactUsScreen}
+        options={{
+          headerStyle: {backgroundColor: colors.black},
+          headerTitleStyle: {color: colors.darkYellow},
+        }}
+      />
     </Tab.Navigator>
   );
 };

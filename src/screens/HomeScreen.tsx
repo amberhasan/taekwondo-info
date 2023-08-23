@@ -82,6 +82,9 @@ const HomeScreen = props => {
       case 7:
         setIsVisible(true);
         break;
+      case 8:
+        props.navigation.navigate('BeltRequirementsScreen');
+        break;
       default:
         Alert.alert('Error', `${id} is not handled yet`);
     }

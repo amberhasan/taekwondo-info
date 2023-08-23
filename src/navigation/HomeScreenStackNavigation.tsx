@@ -1,21 +1,31 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen'; // Replace this with the actual path to your HomeScreen component
+import {Platform} from 'react-native'; // Import Platform from react-native
+import HomeScreen from '../screens/HomeScreen';
 import ChildrensClassesScreen from '../screens/ChildrensClassesScreen';
 import colors from '../theme/colors';
+import BeltRequirementsScreen from '../screens/BeltRequirementsScreen';
+import BeltDetailsScreen from '../screens/BeltDetailsScreen';
 
 let Stack = createStackNavigator();
 
 const HomeScreenStackNavigation = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerTintColor: colors.darkYellow, // Set the header text color, the back button
+        headerStyle: {
+          backgroundColor: colors.black,
+        },
+        headerTitleStyle: {
+          color: colors.darkYellow,
+        },
+      }}>
       <Stack.Screen
         name="HomeScreen"
         component={HomeScreen}
         options={{
           title: 'Home Page',
-          headerStyle: {backgroundColor: colors.black},
-          headerTitleStyle: {color: colors.darkYellow},
         }}
       />
       <Stack.Screen
@@ -23,8 +33,21 @@ const HomeScreenStackNavigation = () => {
         component={ChildrensClassesScreen}
         options={{
           title: `Children's Classes`,
-          headerStyle: {backgroundColor: colors.black},
         }}
+      />
+      <Stack.Screen
+        name="BeltRequirementsScreen"
+        component={BeltRequirementsScreen}
+        options={{
+          title: `Belt Requirements`,
+        }}
+      />
+      <Stack.Screen
+        name="BeltDetailsScreen"
+        component={BeltDetailsScreen}
+        options={({route}) => ({
+          title: 'Belt Details',
+        })}
       />
     </Stack.Navigator>
   );

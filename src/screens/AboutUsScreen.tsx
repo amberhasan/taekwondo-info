@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import CollapsibleView from '../components/CollapsibleView';
 import colors from '../theme/colors';
@@ -13,22 +19,48 @@ const Data = [
   },
 ];
 
+const BulletPoint = ({text}) => (
+  <View style={styles.bulletContainer}>
+    <View style={styles.bullet} />
+    <Text style={styles.bulletText}>{text}</Text>
+  </View>
+);
+
+const CollapsibleSection = ({title, children}) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <View style={styles.collapsibleContainer}>
+      <TouchableOpacity
+        style={styles.collapsibleHeader}
+        onPress={() => setIsExpanded(!isExpanded)}>
+        <Text style={styles.collapsibleHeaderText}>{title}</Text>
+      </TouchableOpacity>
+      <Collapsible collapsed={!isExpanded}>
+        <ScrollView>
+          <View style={styles.collapsibleContent}>{children}</View>
+        </ScrollView>
+      </Collapsible>
+    </View>
+  );
+};
+
 const AboutUsScreen = () => {
   return (
-    <View style={{flex: 1, backgroundColor: 'black'}}>
-      <CollapsibleView title={'School Rules'}>
-        <Text style={styles.description}>
-          - Please arrive 10 minutes before class time. - Stretch quietly while
-          waiting for class to begin. - Yellow belt and up = Sparring Gear is
-          required for protection. - Keep body, hair and uniform clean and
-          presentable. - Always be respectful and courteous to others.
-        </Text>
-      </CollapsibleView>
+    <View style={styles.container}>
+      <CollapsibleSection title={'School Rules'}>
+        <BulletPoint text="Please arrive 10 minutes before class time." />
+        <BulletPoint text="Stretch quietly while waiting for class to begin." />
+        <BulletPoint text="Yellow belt and up = Sparring Gear is required for protection." />
+        <BulletPoint text="Keep body, hair and uniform clean and presentable." />
+        <BulletPoint text="Always be respectful and courteous to others." />
+      </CollapsibleSection>
 
-      <CollapsibleView title={'Our Schedule'}>
+      <CollapsibleSection title={'Our Schedule'}>
         <Text>Schedule</Text>
-      </CollapsibleView>
-      <CollapsibleView title={'About Instructor'}>
+      </CollapsibleSection>
+
+      <CollapsibleSection title={'About Instructor'}>
         <Text style={styles.description}>
           Master Lee (President & Founder) is the head instructor at Lee's U.S.
           Taekwondo Academy. He is a WTF certified 8th Dan Black Belt with over
@@ -37,9 +69,9 @@ const AboutUsScreen = () => {
           students, children & adults, have passed through this school with over
           100 students earning their Black Belts.
         </Text>
-      </CollapsibleView>
+      </CollapsibleSection>
 
-      <CollapsibleView title={'About Our School'}>
+      <CollapsibleSection title={'About Our School'}>
         <Text style={styles.description}>
           Master Lee's U.S. Taekwondo, over the 18 years we have been in
           business, is a special place dedicated to fitness, family and
@@ -52,9 +84,9 @@ const AboutUsScreen = () => {
           these things daily, we can keep our bodies, minds and spirits in good
           health and harmony.
         </Text>
-      </CollapsibleView>
+      </CollapsibleSection>
 
-      <CollapsibleView title={'About Taekwondo'}>
+      <CollapsibleSection title={'About Taekwondo'}>
         <Text>What do we teach?</Text>
         <Text style={styles.description}>
           Tae Kwon Do, the world’s most popular martial art, originated in
@@ -90,17 +122,62 @@ const AboutUsScreen = () => {
           Confidence and self Discipline. You will sleep better, feel good about
           yourself, and have FUN!
         </Text>
-      </CollapsibleView>
+      </CollapsibleSection>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
   description: {
     fontSize: 18,
     color: colors.veryLightGray,
     paddingVertical: 15,
     paddingHorizontal: 10,
   },
+  bulletContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginVertical: 5,
+  },
+  bullet: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: colors.veryLightGray,
+    marginRight: 10,
+    marginTop: 6,
+  },
+  bulletText: {
+    flex: 1,
+    fontSize: 18,
+    color: colors.veryLightGray,
+  },
+  collapsibleContainer: {
+    marginVertical: 10,
+  },
+  collapsibleHeader: {
+    backgroundColor: colors.darkGray,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  collapsibleHeaderText: {
+    fontSize: 20,
+    color: 'white',
+  },
+  collapsibleContent: {
+    backgroundColor: colors.lightGray,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderBottomLeftRadius: 8,
+    borderBottomRightRadius: 8,
+  },
 });
+
 export default AboutUsScreen;

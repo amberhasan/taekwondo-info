@@ -1,44 +1,73 @@
-import React, {useState} from 'react';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import {Appbar, Button} from 'react-native-paper';
 
-const BeltDetailScreen = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+const BeltDetailScreen = ({route}) => {
+  const id = route.params.id;
+  const [selectedTab, setSelectedTab] = useState('junior');
+  const [beltDetails, setBeltDetails] = useState({});
 
-  const handleIndexChange = index => {
-    setSelectedIndex(index);
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:3000/belts?beltType=${id}`)
+      .then(res => {
+        setBeltDetails(res.data);
+      })
+      .catch(err => {
+        console.log('err', err);
+      });
+  }, []);
+
+  const handleTabChange = (name: string) => {
+    setSelectedTab(name);
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.segmentedControlContainer}>
         <Button
-          mode={selectedIndex === 0 ? 'contained' : 'outlined'}
-          onPress={() => handleIndexChange(0)}
+          mode={selectedTab === 'junior' ? 'contained' : 'outlined'}
+          onPress={() => handleTabChange('junior')}
           style={[styles.segmentedButton, styles.leftSegmentedButton]}>
           Junior
         </Button>
         <Button
-          mode={selectedIndex === 1 ? 'contained' : 'outlined'}
-          onPress={() => handleIndexChange(1)}
+          mode={selectedTab === 'senior' ? 'contained' : 'outlined'}
+          onPress={() => handleTabChange('senior')}
           style={[styles.segmentedButton, styles.rightSegmentedButton]}>
           Senior
         </Button>
       </View>
       <View style={styles.content}>
-        {selectedIndex === 0 ? (
-          <Text>Junior Content</Text>
-        ) : (
-          <Text>Senior Content</Text>
+        {beltDetails[selectedTab] && (
+          <View>
+            {Object.entries(beltDetails[selectedTab]).map(
+              ([section, values]) => (
+                <View key={section} style={styles.sectionContainer}>
+                  <View style={styles.sectionBorder}>
+                    <Text style={styles.subtitle}>{section}:</Text>
+                    {Array.isArray(values) ? (
+                      <Text style={styles.details}>{values.join(', ')}</Text>
+                    ) : (
+                      <Text style={styles.details}>{values}</Text>
+                    )}
+                  </View>
+                </View>
+              ),
+            )}
+          </View>
         )}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#f7f7f7',
   },
   segmentedControlContainer: {
     flexDirection: 'row',
@@ -47,6 +76,7 @@ const styles = StyleSheet.create({
   },
   segmentedButton: {
     flex: 1,
+    paddingHorizontal: 10, // Add horizontal padding
   },
   leftSegmentedButton: {
     borderTopRightRadius: 0,
@@ -60,8 +90,33 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    padding: 20,
+  },
+  sectionContainer: {
+    marginBottom: 15,
+  },
+  sectionBorder: {
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+    backgroundColor: 'white',
+    padding: 15,
+    borderRadius: 10,
+    elevation: 2,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 15,
+  },
+  subtitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    color: '#333',
+  },
+  details: {
+    fontSize: 16,
+    color: '#555',
   },
 });
 

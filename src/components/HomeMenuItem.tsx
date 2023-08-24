@@ -20,7 +20,7 @@ const HomeMenuItem = ({data, onPress}) => {
         borderRadius: 10,
         overflow: 'hidden',
         elevation: 5, // Apply a shadow effect
-        shadowColor: colors.darkYellow, // Use Dark Yellow for shadow color
+        shadowColor: colors.black, // Use Dark Yellow for shadow color
         shadowOffset: {
           width: 10,
           height: 10,
@@ -41,7 +41,7 @@ const HomeMenuItem = ({data, onPress}) => {
             }}>
             <Text
               style={{
-                color: colors.lightYellow,
+                color: colors.white,
                 textAlign: 'center',
                 fontWeight: 'bold',
               }}>

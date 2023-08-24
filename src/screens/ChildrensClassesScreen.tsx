@@ -3,38 +3,38 @@ import {View, Text, StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import colors from '../theme/colors'; // Import the colors from your color scheme
 
+const Section = ({title, content}) => {
+  return (
+    <View style={styles.section}>
+      <Text style={styles.sectionTitle}>{title}</Text>
+      <Text style={styles.sectionContent}>{content}</Text>
+    </View>
+  );
+};
+
 const ChildrensClassesScreen = () => {
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Children's Program</Text>
-      <Text style={styles.description}>
-        Our children's program strengthens confidence, energy, and spirit. While
-        having fun learning to kick, block, and punch, your child will realize
-        improved academics, unshakable self-respect, and increased strength and
-        fitness in mind and body.
-      </Text>
-      <Text style={styles.description}>
-        Youngsters also develop the ability to concentrate and listen more
-        closely, respect for others, good sportsmanship, and new friendships!
-      </Text>
-      <Text style={styles.highlights}>
-        ~ Junior class awards and achievement banquet.
-        {'\n'}~ Promotion belt test.
-        {'\n'}~ Taekwondo championship.
-        {'\n'}~ Christmas party.
-        {'\n'}~ Family picnic.
-      </Text>
-      <Text style={styles.callToAction}>~ BE THE BEST YOU CAN BE!</Text>
-      <Text style={styles.classInformation}>
-        Class Information: Any student aged 4 - 10 will be considered for our
-        children's classes.
-        {'\n'}Starting in our children's classes, we focus on building
-        leadership skills.
-        {'\n'}Listening to parents, creating healthy successful habits,
-        nutrition, self-confidence, strength training, increasing flexibility,
-        and positive thinking are the main focus of all our programs and are
-        highly reinforced in our children's classes.
-      </Text>
+      <Section
+        title="Children's Program"
+        content="Strengthen your child's confidence, energy, and spirit while they have fun learning to kick, block, and punch. Your child will improve in academics, have unshakable self-respect, and increase strength and fitness in mind and body. Youngsters also develop the ability to concentrate and listen more closely, respect others more, have good sportsmanship, and make new friendships!"
+      />
+      <Section
+        title="Program Highlights"
+        content={
+          <>
+            {'\u2022'} Belt Promotion Tests.{'\n'}
+            {'\u2022'} Annual Taekwondo Championship.{'\n'}
+            {'\u2022'} Christmas Party.{'\n'}
+            {'\u2022'} Annual Family Picnic.{'\n'}
+            {'\u2022'} Junior class awards.
+          </>
+        }
+      />
+      <Section
+        title="Class Information"
+        content="Any student aged 4 - 10 will be considered for our children's classes. Starting in our children's classes, we focus on building leadership skills. Listening to parents, creating healthy successful habits, nutrition, self-confidence, strength training, increasing flexibility, and positive thinking are the main focus of all our programs and are highly reinforced in our children's classes."
+      />
     </ScrollView>
   );
 };
@@ -42,34 +42,24 @@ const ChildrensClassesScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: colors.black,
+    backgroundColor: colors.white,
   },
-  title: {
+  section: {
+    marginBottom: 20,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: colors.lightGray, // Define your border color
+    borderRadius: 8,
+  },
+  sectionTitle: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: colors.yellow,
+    color: colors.black,
   },
-  description: {
+  sectionContent: {
     fontSize: 16,
-    marginBottom: 15,
-    color: colors.white,
-  },
-  highlights: {
-    fontSize: 16,
-    marginBottom: 15,
-    fontStyle: 'italic',
-    color: colors.lightYellow,
-  },
-  callToAction: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    color: colors.darkYellow,
-  },
-  classInformation: {
-    fontSize: 16,
-    color: colors.white,
+    color: colors.black,
   },
 });
 

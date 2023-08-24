@@ -8,6 +8,18 @@ const colors = {
   lightYellow: '#ffe082',
   slightlyDarkWhite: '#f0f0f0',
   veryLightGray: '#f5f5f5',
+  red: '#ff0000',
+  blue: '#007bff',
+  darkBlue: '#004ba0',
+  lightBlue: '#b8daff',
+  darkRed: '#b00020',
+  lightRed: '#ff8a80',
+  darkGreen: '#0a6b0d',
+  lightGreen: '#c8e6c9',
+  darkPurple: '#4a148c',
+  lightPurple: '#d1c4e9',
+  darkTeal: '#00695c',
+  lightTeal: '#b2dfdb',
 };
 
 export default colors;

@@ -13,13 +13,13 @@ const BottomTabNavigator: React.FC = () => {
     <Tab.Navigator
       initialRouteName="HomeScreenStackNavigation"
       screenOptions={({route}) => ({
-        tabBarActiveTintColor: colors.darkYellow,
-        tabBarInactiveTintColor: colors.veryLightGray,
+        tabBarActiveTintColor: colors.black,
+        tabBarInactiveTintColor: colors.veryLightGray, //TODO, make the light gray lighter.
         tabBarStyle: {
           height: '10%',
           // paddingHorizontal: 5,
           // paddingTop: 0,
-          backgroundColor: colors.black,
+          backgroundColor: colors.white,
           // position: 'absolute',
           // borderTopWidth: 0,
         },
@@ -54,8 +54,8 @@ const BottomTabNavigator: React.FC = () => {
         name="About Us"
         component={AboutUsScreen}
         options={{
-          headerStyle: {backgroundColor: colors.black},
-          headerTitleStyle: {color: colors.darkYellow},
+          headerStyle: {backgroundColor: colors.white},
+          headerTitleStyle: {color: colors.black},
         }}
       />
       <Tab.Screen
@@ -70,8 +70,8 @@ const BottomTabNavigator: React.FC = () => {
         name="Contact Us"
         component={ContactUsScreen}
         options={{
-          headerStyle: {backgroundColor: colors.black},
-          headerTitleStyle: {color: colors.darkYellow},
+          headerStyle: {backgroundColor: colors.white},
+          headerTitleStyle: {color: colors.black},
         }}
       />
     </Tab.Navigator>

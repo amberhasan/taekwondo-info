@@ -7,17 +7,7 @@ import {
   ScrollView,
 } from 'react-native';
 import Collapsible from 'react-native-collapsible';
-import CollapsibleView from '../components/CollapsibleView';
-import colors from '../theme/colors';
-
-const Data = [
-  {
-    title: 'About Instructor',
-    description: '',
-    images: [],
-    isExpanded: false,
-  },
-];
+import colors from '../theme/colors'; // Adjust the path accordingly
 
 const BulletPoint = ({text}) => (
   <View style={styles.bulletContainer}>
@@ -26,14 +16,20 @@ const BulletPoint = ({text}) => (
   </View>
 );
 
-const CollapsibleSection = ({title, children}) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const CollapsibleSection = ({
+  title,
+  children,
+  index,
+  currentIndex,
+  onExpand,
+}) => {
+  const isExpanded = index === currentIndex;
 
   return (
     <View style={styles.collapsibleContainer}>
       <TouchableOpacity
         style={styles.collapsibleHeader}
-        onPress={() => setIsExpanded(!isExpanded)}>
+        onPress={() => onExpand(index)}>
         <Text style={styles.collapsibleHeaderText}>{title}</Text>
       </TouchableOpacity>
       <Collapsible collapsed={!isExpanded}>
@@ -46,9 +42,19 @@ const CollapsibleSection = ({title, children}) => {
 };
 
 const AboutUsScreen = () => {
+  const [currentIndex, setCurrentIndex] = useState(null);
+
+  const handleExpandSection = index => {
+    setCurrentIndex(currentIndex === index ? null : index);
+  };
+
   return (
     <View style={styles.container}>
-      <CollapsibleSection title={'School Rules'}>
+      <CollapsibleSection
+        title={'School Rules'}
+        index={0}
+        currentIndex={currentIndex}
+        onExpand={handleExpandSection}>
         <BulletPoint text="Please arrive 10 minutes before class time." />
         <BulletPoint text="Stretch quietly while waiting for class to begin." />
         <BulletPoint text="Yellow belt and up = Sparring Gear is required for protection." />
@@ -56,11 +62,19 @@ const AboutUsScreen = () => {
         <BulletPoint text="Always be respectful and courteous to others." />
       </CollapsibleSection>
 
-      <CollapsibleSection title={'Our Schedule'}>
+      <CollapsibleSection
+        title={'Our Schedule'}
+        index={1}
+        currentIndex={currentIndex}
+        onExpand={handleExpandSection}>
         <Text>Schedule</Text>
       </CollapsibleSection>
 
-      <CollapsibleSection title={'About Instructor'}>
+      <CollapsibleSection
+        title={'About Instructor'}
+        index={2}
+        currentIndex={currentIndex}
+        onExpand={handleExpandSection}>
         <Text style={styles.description}>
           Master Lee (President & Founder) is the head instructor at Lee's U.S.
           Taekwondo Academy. He is a WTF certified 8th Dan Black Belt with over
@@ -71,7 +85,11 @@ const AboutUsScreen = () => {
         </Text>
       </CollapsibleSection>
 
-      <CollapsibleSection title={'About Our School'}>
+      <CollapsibleSection
+        title={'About Our School'}
+        index={3}
+        currentIndex={currentIndex}
+        onExpand={handleExpandSection}>
         <Text style={styles.description}>
           Master Lee's U.S. Taekwondo, over the 18 years we have been in
           business, is a special place dedicated to fitness, family and
@@ -86,7 +104,11 @@ const AboutUsScreen = () => {
         </Text>
       </CollapsibleSection>
 
-      <CollapsibleSection title={'About Taekwondo'}>
+      <CollapsibleSection
+        title={'About Taekwondo'}
+        index={4}
+        currentIndex={currentIndex}
+        onExpand={handleExpandSection}>
         <Text>What do we teach?</Text>
         <Text style={styles.description}>
           Tae Kwon Do, the world’s most popular martial art, originated in
@@ -130,13 +152,14 @@ const AboutUsScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: colors.white,
+    padding: 20,
   },
   description: {
-    fontSize: 18,
-    color: colors.veryLightGray,
-    paddingVertical: 15,
-    paddingHorizontal: 10,
+    fontSize: 16,
+    color: colors.darkGray,
+    paddingBottom: 15,
+    lineHeight: 24,
   },
   bulletContainer: {
     flexDirection: 'row',
@@ -147,20 +170,21 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: colors.veryLightGray,
+    backgroundColor: colors.darkGray,
     marginRight: 10,
     marginTop: 6,
   },
   bulletText: {
     flex: 1,
-    fontSize: 18,
-    color: colors.veryLightGray,
+    fontSize: 16,
+    color: colors.darkGray,
+    lineHeight: 24,
   },
   collapsibleContainer: {
     marginVertical: 10,
   },
   collapsibleHeader: {
-    backgroundColor: colors.darkGray,
+    backgroundColor: colors.lightGray,
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 8,
@@ -168,11 +192,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   collapsibleHeaderText: {
-    fontSize: 20,
-    color: 'white',
+    fontSize: 18,
+    color: colors.white,
   },
   collapsibleContent: {
-    backgroundColor: colors.lightGray,
+    backgroundColor: colors.slightlyDarkWhite,
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderBottomLeftRadius: 8,

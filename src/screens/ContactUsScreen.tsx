@@ -73,10 +73,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: colors.black,
   },
   section: {
-    backgroundColor: colors.lightGray,
+    backgroundColor: colors.lightGray, //TODO: make this a lighter gray
     borderRadius: 10,
     padding: 10,
     marginBottom: 15,

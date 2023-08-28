@@ -11,7 +11,7 @@ const BeltDetailScreen = ({route}) => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:3000/belts?beltType=${id}`)
+      .get(`https://taekwondo-backend.fly.dev/belts?beltType=${id}`)
       .then(res => {
         setBeltDetails(res.data);
       })
@@ -30,13 +30,21 @@ const BeltDetailScreen = ({route}) => {
         <Button
           mode={selectedTab === 'junior' ? 'contained' : 'outlined'}
           onPress={() => handleTabChange('junior')}
-          style={[styles.segmentedButton, styles.leftSegmentedButton]}>
+          style={[
+            styles.segmentedButton,
+            styles.leftSegmentedButton,
+            selectedTab === 'junior' ? styles.selectedButton : {},
+          ]}>
           Junior
         </Button>
         <Button
           mode={selectedTab === 'senior' ? 'contained' : 'outlined'}
           onPress={() => handleTabChange('senior')}
-          style={[styles.segmentedButton, styles.rightSegmentedButton]}>
+          style={[
+            styles.segmentedButton,
+            styles.rightSegmentedButton,
+            selectedTab === 'senior' ? styles.selectedButton : {},
+          ]}>
           Senior
         </Button>
       </View>
@@ -44,18 +52,34 @@ const BeltDetailScreen = ({route}) => {
         {beltDetails[selectedTab] && (
           <View>
             {Object.entries(beltDetails[selectedTab]).map(
-              ([section, values]) => (
-                <View key={section} style={styles.sectionContainer}>
-                  <View style={styles.sectionBorder}>
-                    <Text style={styles.subtitle}>{section}:</Text>
-                    {Array.isArray(values) ? (
-                      <Text style={styles.details}>{values.join(', ')}</Text>
-                    ) : (
-                      <Text style={styles.details}>{values}</Text>
-                    )}
+              ([section, values]) => {
+                // Customize section title display
+                let formattedSection = section.replace(/_/g, ' '); // Replace underscores with spaces
+                formattedSection = formattedSection.replace(
+                  /\w\S*/g,
+                  txt =>
+                    txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
+                ); // Capitalize each word
+
+                return (
+                  <View key={section} style={styles.sectionContainer}>
+                    <View style={styles.sectionBorder}>
+                      <Text style={styles.subtitle}>{formattedSection}:</Text>
+                      {Array.isArray(values) ? (
+                        <View style={styles.bulletList}>
+                          {values.map((value, index) => (
+                            <Text key={index} style={styles.bulletPoint}>
+                              • {value}
+                            </Text>
+                          ))}
+                        </View>
+                      ) : (
+                        <Text style={styles.details}>{values}</Text>
+                      )}
+                    </View>
                   </View>
-                </View>
-              ),
+                );
+              },
             )}
           </View>
         )}
@@ -72,6 +96,7 @@ const styles = StyleSheet.create({
   segmentedControlContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
+    paddingHorizontal: 20, // Add horizontal padding
     marginTop: 20,
   },
   segmentedButton: {
@@ -117,6 +142,10 @@ const styles = StyleSheet.create({
   details: {
     fontSize: 16,
     color: '#555',
+  },
+  selectedButton: {
+    backgroundColor: 'blue',
+    borderColor: 'blue',
   },
 });
 

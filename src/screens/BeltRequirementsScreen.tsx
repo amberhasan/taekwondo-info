@@ -81,7 +81,7 @@ const BeltRequirementsScreen = () => {
     <ScrollView contentContainerStyle={styles.container}>
       {beltData.map((belt, index) => (
         <TouchableOpacity
-          style={[styles.row, {backgroundColor: '#2E86C1'}]} // Blue background color
+          style={[styles.row]} // Gray background color
           key={index}
           onPress={() => handleBeltPress(belt)}>
           <Image source={belt.image} style={styles.beltImage} />
@@ -97,21 +97,20 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F2F4F8',
+    backgroundColor: '#D3D3D3',
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 16,
-    paddingHorizontal: 24,
+    paddingHorizontal: '10%', // Added padding on the sides
     width: '100%',
     marginVertical: 4,
     borderRadius: 12,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
     elevation: 2,
+    backgroundColor: '#F9F9F9',
+    borderColor: '#E5E5E5',
+    borderWidth: 1,
   },
   beltImage: {
     width: 60,
@@ -121,7 +120,7 @@ const styles = StyleSheet.create({
   beltText: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#333', // Dark gray text color
     marginLeft: 16,
   },
 });

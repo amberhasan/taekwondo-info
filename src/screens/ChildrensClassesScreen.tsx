@@ -42,24 +42,24 @@ const ChildrensClassesScreen = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: colors.white,
+    backgroundColor: colors.primaryBackground,
   },
   section: {
     marginBottom: 20,
     padding: 20,
     borderWidth: 1,
-    borderColor: colors.lightGray, // Define your border color
+    borderColor: colors.sectionHeaders, // Define your border color
     borderRadius: 8,
   },
   sectionTitle: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: colors.black,
+    color: colors.sectionHeaders,
   },
   sectionContent: {
     fontSize: 16,
-    color: colors.black,
+    color: colors.descriptions,
   },
 });
 

@@ -14,7 +14,7 @@ const CollapsibleView = ({title, children}) => {
         flex: 0,
         borderWidth: 0.3,
         borderColor: colors.lightGray,
-        backgroundColor: colors.black,
+        backgroundColor: colors.primaryBackground,
         elevation: 5, // Apply a shadow effect
         shadowColor: colors.darkYellow, // Use Dark Yellow for shadow color
         shadowOffset: {

@@ -1,25 +1,14 @@
 const colors = {
-  black: '#000000',
-  yellow: '#ffc107',
-  white: '#ffffff',
-  darkGray: '#1c1c1c',
-  lightGray: '#333333',
-  darkYellow: '#e0a800',
-  lightYellow: '#ffe082',
-  slightlyDarkWhite: '#f0f0f0',
-  veryLightGray: '#f5f5f5',
-  red: '#ff0000',
-  blue: '#007bff',
-  darkBlue: '#004ba0',
-  lightBlue: '#b8daff',
-  darkRed: '#b00020',
-  lightRed: '#ff8a80',
-  darkGreen: '#0a6b0d',
-  lightGreen: '#c8e6c9',
-  darkPurple: '#4a148c',
-  lightPurple: '#d1c4e9',
-  darkTeal: '#00695c',
-  lightTeal: '#b2dfdb',
+  primaryBackground: '#f5f5f5', //smoky white
+  sectionHeaders: '#333333', //dark gray, almost black
+  titles: '#000000', //black
+  descriptions: '#262626',
+  accentColor: '#1e88e5',
+  alternativeBackground: '#f8f8f8', //almost white
+  subtleHighlight: '#e0a800',
+  ctaButtons: '#4caf50',
+  tabBarBackgroundColor: '#ffffff', // White or veryLightGray from your palette
+  tabBarBorderTopColor: '#e0e0e0', // Slightly lighter than darkGray from your palette
 };
 
 export default colors;

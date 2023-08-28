@@ -28,7 +28,7 @@ const ContactUsScreen = () => {
       </View>
       <View style={styles.section}>
         <Text style={styles.sectionHeader}>Contact Info</Text>
-        <Text style={styles.infoText}>Email: Use Contact Form!</Text>
+        <Text style={styles.infoText}>Email: leestkd4u@yahoo.com</Text>
         <Text style={styles.infoText}>Website: leesustaekwondo.com</Text>
         <Text style={styles.infoText}>(972) 208-8504</Text>
         <Text style={styles.infoText}>Facebook Page</Text>
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   section: {
-    backgroundColor: colors.lightGray, //TODO: make this a lighter gray
+    backgroundColor: colors.veryLightGray,
     borderRadius: 10,
     padding: 10,
     marginBottom: 15,
@@ -90,11 +90,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: colors.white,
+    color: colors.primaryBackground,
   },
   infoText: {
     marginBottom: 5,
-    color: colors.lightYellow,
+    color: colors.primaryBackground,
   },
   daySection: {
     flexDirection: 'row', // Align text in a row

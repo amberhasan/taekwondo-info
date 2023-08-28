@@ -13,12 +13,12 @@ const HomeScreenStackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTintColor: colors.black, // Set the header text color, the back button
+        headerTintColor: colors.titles, // the back button
         headerStyle: {
-          backgroundColor: colors.white,
+          backgroundColor: colors.primaryBackground,
         },
         headerTitleStyle: {
-          color: colors.black,
+          color: colors.titles,
         },
       }}>
       <Stack.Screen

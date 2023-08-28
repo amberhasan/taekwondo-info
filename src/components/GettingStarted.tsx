@@ -6,7 +6,7 @@ import {
   Modal,
   TouchableOpacity,
 } from 'react-native';
-import ModalView from './ModalView';
+// import ModalView from './ModalView';
 import colors from '../theme/colors';
 
 const GettingStarted = () => {
@@ -23,7 +23,7 @@ const GettingStarted = () => {
   return (
     <View
       style={{
-        height: 150,
+        height: 100,
         borderRadius: 10,
         margin: 10,
         overflow: 'hidden',
@@ -36,13 +36,13 @@ const GettingStarted = () => {
             alignItems: 'center',
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
           }}>
-          <ModalView style={{color: 'white', fontSize: 20}}>
+          {/* <ModalView style={{color: 'white', fontSize: 20}}>
             <Text>
               Try our $99 5-week Back To School Special!* It is a 5 week Back To
               School Special for new students to try Taekwondo out! *Offer for
               new students only
             </Text>
-          </ModalView>
+          </ModalView> */}
           <TouchableOpacity onPress={closeModal} style={{marginTop: 20}}>
             <Text style={{color: 'white', fontSize: 16}}>Close Modal</Text>
           </TouchableOpacity>
@@ -52,7 +52,7 @@ const GettingStarted = () => {
         <ImageBackground
           source={require('../assets/images/homepage/getting_started.png')}
           style={{
-            height: 150,
+            height: 100,
             width: '100%',
           }}>
           <View
@@ -65,7 +65,7 @@ const GettingStarted = () => {
             }}>
             <Text
               style={{
-                color: colors.white,
+                color: colors.primaryBackground,
                 fontSize: 18,
                 fontWeight: 'bold',
                 marginBottom: 5,
@@ -74,7 +74,7 @@ const GettingStarted = () => {
             </Text>
             <Text
               style={{
-                color: colors.white,
+                color: colors.primaryBackground,
                 fontSize: 14,
               }}>
               Try our special!

@@ -13,15 +13,13 @@ const BottomTabNavigator: React.FC = () => {
     <Tab.Navigator
       initialRouteName="HomeScreenStackNavigation"
       screenOptions={({route}) => ({
-        tabBarActiveTintColor: colors.black,
-        tabBarInactiveTintColor: colors.veryLightGray, //TODO, make the light gray lighter.
+        tabBarActiveTintColor: colors.accentColor,
+        tabBarInactiveTintColor: colors.sectionHeaders, //TODO, make the light gray lighter.
         tabBarStyle: {
-          height: '10%',
-          // paddingHorizontal: 5,
-          // paddingTop: 0,
-          backgroundColor: colors.white,
-          // position: 'absolute',
-          // borderTopWidth: 0,
+          height: '8%',
+          backgroundColor: colors.tabBarBackgroundColor,
+          borderTopWidth: 0.25,
+          borderTopColor: colors.tabBarBorderTopColor, // Change the border color to black
         },
         tabBarIcon: ({color, size}) => {
           let iconName;
@@ -54,8 +52,8 @@ const BottomTabNavigator: React.FC = () => {
         name="About Us"
         component={AboutUsScreen}
         options={{
-          headerStyle: {backgroundColor: colors.white},
-          headerTitleStyle: {color: colors.black},
+          headerStyle: {backgroundColor: colors.primaryBackground},
+          headerTitleStyle: {color: colors.titles},
         }}
       />
       <Tab.Screen
@@ -70,8 +68,8 @@ const BottomTabNavigator: React.FC = () => {
         name="Contact Us"
         component={ContactUsScreen}
         options={{
-          headerStyle: {backgroundColor: colors.white},
-          headerTitleStyle: {color: colors.black},
+          headerStyle: {backgroundColor: colors.primaryBackground},
+          headerTitleStyle: {color: colors.titles},
         }}
       />
     </Tab.Navigator>

@@ -12,7 +12,7 @@ const ModalView = props => {
             flex: 0,
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: colors.white,
+            backgroundColor: colors.primaryBackground,
             padding: 10,
             borderRadius: 10,
           }}>
@@ -21,12 +21,14 @@ const ModalView = props => {
             onPress={() => props.setIsVisible(false)}
             style={{
               marginTop: 10,
-              backgroundColor: colors.yellow,
+              backgroundColor: colors.subtleHighlight,
               paddingVertical: 8,
               paddingHorizontal: 20,
               borderRadius: 5,
             }}>
-            <Text style={{color: colors.black, fontWeight: 'bold'}}>Close</Text>
+            <Text style={{color: colors.primaryBackground, fontWeight: 'bold'}}>
+              Close
+            </Text>
           </TouchableOpacity>
         </View>
       </Modal>

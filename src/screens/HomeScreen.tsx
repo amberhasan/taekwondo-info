@@ -92,6 +92,8 @@ const HomeScreen = props => {
 
   const showView = id => {
     switch (id) {
+      case 1:
+        return <GettingStarted />;
       case 2:
         return <AdultTeenClassesView />;
       case 3:
@@ -110,7 +112,7 @@ const HomeScreen = props => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: colors.white}}>
+    <View style={{flex: 1, backgroundColor: colors.primaryBackground}}>
       <StatusBar barStyle={'light-content'} />
       <ModalView isVisible={isVisible} setIsVisible={setIsVisible}>
         {showView(id)}

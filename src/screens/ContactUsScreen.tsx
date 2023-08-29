@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   section: {
-    backgroundColor: colors.veryLightGray,
+    backgroundColor: colors.descriptions,
     borderRadius: 10,
     padding: 10,
     marginBottom: 15,

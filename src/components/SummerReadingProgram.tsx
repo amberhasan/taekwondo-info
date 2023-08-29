@@ -1,14 +1,40 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Platform,
+  Alert,
+} from 'react-native';
+import RNFetchBlob from 'rn-fetch-blob';
+
+const fileUrl = 'https://leesustaekwondo.com/assets/dls/readingform.pdf'; // URL of the file you want to download from leesustaekwondo.com
+
+const downloadFile = async () => {
+  const path = RNFetchBlob.fs.dirs;
+  const filename = `readingform-${new Date().getTime()}.pdf`;
+  try {
+    const rnFetchBlob = RNFetchBlob.config({
+      fileCache: true,
+      addAndroidDownloads: {
+        useDownloadManager: true,
+        notification: true,
+        mediaScannable: true,
+        title: filename,
+        path: `${path.DownloadDir}/${filename}`,
+      },
+    });
+    const res = await rnFetchBlob.fetch('GET', fileUrl, {});
+    console.log('The file saved to ', res.path());
+    Alert.alert('file downloaded');
+  } catch (err) {
+    console.log('download failed', err);
+  }
+};
 
 const SummerReadingProgram = () => {
-  const handleFakeDownload = () => {
-    console.log('Fake download started...');
-    setTimeout(() => {
-      console.log('Fake download completed.');
-    }, 2000); // Simulating a delay for download completion
-  };
-
   return (
     <View style={styles.container}>
       <Text style={styles.description}>
@@ -16,7 +42,7 @@ const SummerReadingProgram = () => {
         read books and write summaries about them to help further their
         understanding.
       </Text>
-      <TouchableOpacity onPress={handleFakeDownload} style={styles.button}>
+      <TouchableOpacity onPress={downloadFile} style={styles.button}>
         <Text style={styles.buttonText}>Download PDF</Text>
       </TouchableOpacity>
       {/* 

@@ -13,22 +13,39 @@ import RNFetchBlob from 'rn-fetch-blob';
 const fileUrl = 'https://leesustaekwondo.com/assets/dls/readingform.pdf'; // URL of the file you want to download from leesustaekwondo.com
 
 const downloadFile = async () => {
-  const path = RNFetchBlob.fs.dirs;
+  const {dirs} = RNFetchBlob.fs;
   const filename = `readingform-${new Date().getTime()}.pdf`;
+  const path =
+    Platform.OS === 'ios'
+      ? `${dirs.DocumentDir}/${filename}`
+      : `${dirs.DocumentDir}/${filename}`;
   try {
-    const rnFetchBlob = RNFetchBlob.config({
+    const androidConfig = {
       fileCache: true,
       addAndroidDownloads: {
         useDownloadManager: true,
         notification: true,
         mediaScannable: true,
         title: filename,
-        path: `${path.DownloadDir}/${filename}`,
+        path,
       },
-    });
+    };
+    const iosConfig = {
+      fileCache: true,
+      title: filename,
+      path,
+      appendExt: 'pdf',
+    };
+    const config = Platform.OS === 'ios' ? iosConfig : androidConfig;
+    const rnFetchBlob = RNFetchBlob.config(config);
     const res = await rnFetchBlob.fetch('GET', fileUrl, {});
-    console.log('The file saved to ', res.path());
-    Alert.alert('file downloaded');
+    if (Platform.OS === 'ios') {
+      RNFetchBlob.fs.writeFile(path, res.data, 'base64');
+      RNFetchBlob.ios.previewDocument(path);
+    } else {
+      console.log('The file saved to ', res.path());
+      Alert.alert('file downloaded');
+    }
   } catch (err) {
     console.log('download failed', err);
   }

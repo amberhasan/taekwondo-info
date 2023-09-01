@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+  <key>NSAppTransportSecurity</key>
+  <dict>
+      <key>NSAllowsArbitraryLoads</key>
+      <true/>
+  </dict>
  <key>NSAppleMusicUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSBluetoothAlwaysUsageDescription</key>
@@ -25,6 +30,8 @@
     <key>YOUR-PURPOSE-KEY</key>
     <string>YOUR TEXT</string>
   </dict>
+  <key>NSFileProviderDomainUsageDescription</key>
+  <string>Your reason for accessing the file system</string>
   <key>NSLocationWhenInUseUsageDescription</key>
   <string>YOUR TEXT</string>
   <key>NSMicrophoneUsageDescription</key>

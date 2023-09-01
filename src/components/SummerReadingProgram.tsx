@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   Image,
   StyleSheet,
@@ -9,6 +9,8 @@ import {
   Alert,
 } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
+import {request, check, PERMISSIONS, RESULTS} from 'react-native-permissions';
+import DocumentPicker from 'react-native-document-picker';
 
 const fileUrl = 'https://leesustaekwondo.com/assets/dls/readingform.pdf'; // URL of the file you want to download from leesustaekwondo.com
 
@@ -40,8 +42,31 @@ const downloadFile = async () => {
     const rnFetchBlob = RNFetchBlob.config(config);
     const res = await rnFetchBlob.fetch('GET', fileUrl, {});
     if (Platform.OS === 'ios') {
-      RNFetchBlob.fs.writeFile(path, res.data, 'base64');
-      RNFetchBlob.ios.previewDocument(path);
+      const document = await DocumentPicker.pick({
+        type: [DocumentPicker.types.allFiles],
+      });
+      if (document) {
+        const filePath = document.uri;
+        const fileType = document.type;
+
+        // Share the picked file using UIDocumentInteractionController
+        RNFetchBlob.ios.openDocument(filePath, fileType);
+      } else {
+        console.log('No file picked');
+      }
+      // RNFetchBlob.ios.openDocument(filePath)
+      //   .then(() => {
+      //     console.log('File opened successfully');
+      //   })
+      //   .catch((error) => {
+      //     console.error('Error opening file:', error);
+      //   });
+      // RNFetchBlob.fs.writeFile(path, res.data, 'base64');
+      // RNFetchBlob.ios.previewDocument(path);
+      console.log('res.path', res.path());
+      // // RNFetchBlob.ios.openDocument(res.path());
+      // console.log('path', dirs.DocumentDir);
+      // await RNFetchBlob.fs.mv(res.path(), dirs.);
     } else {
       console.log('The file saved to ', res.path());
       Alert.alert('file downloaded');
@@ -52,6 +77,23 @@ const downloadFile = async () => {
 };
 
 const SummerReadingProgram = () => {
+  useEffect(() => {
+    checkPermission();
+  }, []);
+
+  const checkPermission = async () => {
+    try {
+      const checkResult = await check(PERMISSIONS.IOS.MEDIA_LIBRARY);
+      console.log('checkResult', checkResult);
+      if (checkResult != RESULTS.GRANTED) {
+        const requestResult = await request(PERMISSIONS.IOS.MEDIA_LIBRARY);
+        console.log('requestResult', requestResult);
+      }
+    } catch (err) {
+      console.log('checkPermission error ', err);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.description}>

@@ -9,7 +9,7 @@ import {
   Alert,
 } from 'react-native';
 import RNFetchBlob from 'rn-fetch-blob';
-import {request, check, PERMISSIONS, RESULTS} from 'react-native-permissions';
+// import {request, check, PERMISSIONS, RESULTS} from 'react-native-permissions';
 import DocumentPicker from 'react-native-document-picker';
 
 const fileUrl = 'https://leesustaekwondo.com/assets/dls/readingform.pdf'; // URL of the file you want to download from leesustaekwondo.com
@@ -77,22 +77,22 @@ const downloadFile = async () => {
 };
 
 const SummerReadingProgram = () => {
-  useEffect(() => {
-    checkPermission();
-  }, []);
+  // useEffect(() => {
+  //   checkPermission();
+  // }, []);
 
-  const checkPermission = async () => {
-    try {
-      const checkResult = await check(PERMISSIONS.IOS.MEDIA_LIBRARY);
-      console.log('checkResult', checkResult);
-      if (checkResult != RESULTS.GRANTED) {
-        const requestResult = await request(PERMISSIONS.IOS.MEDIA_LIBRARY);
-        console.log('requestResult', requestResult);
-      }
-    } catch (err) {
-      console.log('checkPermission error ', err);
-    }
-  };
+  // const checkPermission = async () => {
+  //   try {
+  //     const checkResult = await check(PERMISSIONS.IOS.MEDIA_LIBRARY);
+  //     console.log('checkResult', checkResult);
+  //     if (checkResult != RESULTS.GRANTED) {
+  //       const requestResult = await request(PERMISSIONS.IOS.MEDIA_LIBRARY);
+  //       console.log('requestResult', requestResult);
+  //     }
+  //   } catch (err) {
+  //     console.log('checkPermission error ', err);
+  //   }
+  // };
 
   return (
     <View style={styles.container}>

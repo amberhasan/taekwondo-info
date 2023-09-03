@@ -6070,11 +6070,6 @@ react-native-paper@^5.10.3:
     color "^3.1.2"
     use-latest-callback "^0.1.5"
 
-react-native-permissions@^3.8.4:
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-3.9.0.tgz#e3ba0460509dce6766e4728173dfa8bbf0886e0b"
-  integrity sha512-Z+PAx1Dld6ckQ4YecY+HvoKysbBBBLQEhawIOpPKZ8n2Pj+jy6KogRIAL00AaE2P76dEdPh6HGkWCDfR4k2siQ==
-
 react-native-reanimated@^3.4.2:
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.4.2.tgz#744154fead6d8d31d5bd9ac617d8c84d74a6f697"

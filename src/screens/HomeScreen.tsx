@@ -11,6 +11,7 @@ import SummerReadingProgram from '../components/SummerReadingProgram';
 import BirthdayParty from '../components/BirthdayParty';
 import colors from '../theme/colors';
 import useHomeScreenDataController from '../hooks/useHomeScreenDataController';
+import {useSelector} from 'react-redux';
 
 const VIEWS = [
   <GettingStarted />,
@@ -25,6 +26,10 @@ const VIEWS = [
 const HomeScreen = props => {
   const {menu, isVisible, setIsVisible, id, setId, onMenuPress} =
     useHomeScreenDataController();
+
+  const value = useSelector(state => state.value);
+  // console.log('I am state from the UI', value);
+  console.log('Render');
 
   return (
     <View style={{flex: 1, backgroundColor: colors.primaryBackground}}>

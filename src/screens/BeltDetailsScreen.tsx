@@ -150,3 +150,48 @@ const styles = StyleSheet.create({
 });
 
 export default BeltDetailScreen;
+
+/**
+ * Model => is an object that store the data (value = 0)
+ * View => UI Part (Button) +1
+ * Controller => Logic ( +1 ) => value = 1
+ */
+
+/**
+ * Store => Model => store the data
+ * Action => View => where we initiate any action
+ * Reducer => Controller => logic, it changes the store/model
+ */
+
+/**
+-- Store --- 
+const state = {
+  value : 0
+ }
+--- Action ---
+const increment = {
+  type : 'INCREMENT'
+}
+---- Reducer-----
+
+const incrementReducer  = (state, action ) => {
+    if(action.type === 'INCREMENT' ){
+      state.value = state.value + 1;
+    }
+}
+
+const decrementReducer  = (state, action ) => {
+    if(action.type === 'DECREMENT' ){
+      state.value = state.value - 1;
+    }
+}
+
+--- Dispatch ----
+
+dispatch(increment);
+
+---- Selectors ----
+ const value = useSelector(state => state.value)
+
+
+ */

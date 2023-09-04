@@ -30,6 +30,8 @@
     "react-native-segmented-control-tab": "^4.0.0",
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^10.0.0",
+    "react-redux": "^8.1.2",
+    "redux": "^4.2.1",
     "rn-fetch-blob": "^0.12.0"
   },
   "devDependencies": {

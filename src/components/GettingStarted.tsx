@@ -6,7 +6,6 @@ import {
   Modal,
   TouchableOpacity,
 } from 'react-native';
-// import ModalView from './ModalView';
 import colors from '../theme/colors';
 import ModalView from './ModalView';
 
@@ -60,8 +59,19 @@ const GettingStarted = () => {
         </ImageBackground>
       </TouchableOpacity>
       <ModalView isVisible={modalVisible} setIsVisible={setModalVisible}>
-        <View>
-          <Text>Hello</Text>
+        <View style={{padding: 10}}>
+          <Text
+            style={{
+              fontSize: 16,
+              fontWeight: 'bold',
+              marginBottom: 10,
+            }}>
+            Try our $99 5-week Special!
+          </Text>
+          <Text>
+            - It is a 5-week Special for new students to try Taekwondo out!
+          </Text>
+          <Text>- *Offer exclusively for new students</Text>
         </View>
       </ModalView>
     </View>

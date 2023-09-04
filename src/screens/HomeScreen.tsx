@@ -28,7 +28,7 @@ const HomeScreen = props => {
 
   return (
     <View style={{flex: 1, backgroundColor: colors.primaryBackground}}>
-      <StatusBar barStyle={'light-content'} />
+      <StatusBar barStyle={'dark-content'} />
       <ModalView isVisible={isVisible} setIsVisible={setIsVisible}>
         {VIEWS[id - 1]}
       </ModalView>
